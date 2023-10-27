@@ -1,0 +1,79 @@
+/* Home.css */
+
+/* Navigation bar styles */
+.navbar {
+    background-color: #343a40;
+  }
+  
+  .navbar a {
+    color: #fff;
+  }
+  
+  .navbar-brand {
+    font-size: 24px;
+  }
+  
+  /* Hero section styles */
+  .jumbotron {
+    background-color: #343a40;
+    color: #fff;
+    padding: 50px;
+  }
+  
+  .jumbotron h1 {
+    font-size: 36px;
+    font-weight: bold;
+  }
+  
+  .jumbotron p {
+    font-size: 18px;
+  }
+  
+  /* Features section styles */
+  .feature-box {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .feature-box h2 {
+    font-size: 24px;
+  }
+  
+  .feature-box p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  /* Button styles */
+  .btn-primary,
+  .btn-success {
+    margin-top: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 10px 20px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .btn-primary:hover,
+  .btn-success:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Footer styles */
+  .footer {
+    background-color: #343a40;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 16px;
+  }
+  
