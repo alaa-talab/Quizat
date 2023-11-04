@@ -3,7 +3,9 @@ import { useHistory } from 'react-router-dom';
 import "./Home.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-
+import loginvalidation from "./LoginValidation.js";
+import Signupvalidation from './SignupValidation.js';
+import axios from 'axios';
 
 
 const Home = () => {
@@ -15,6 +17,7 @@ const Home = () => {
   const [loginData, setLoginData] = useState({
     username: '',
     password: '',
+    email: '',
   });
 
   const [signupData, setSignupData] = useState({
@@ -22,6 +25,8 @@ const Home = () => {
     email: '',
     password: '',
   });
+
+  
 
   const showLogin = () => {
     setShowLoginModal(true);
@@ -39,18 +44,28 @@ const Home = () => {
     setShowSignupModal(false);
   };
 
-  const handleLogin = () => {
-    // Add your actual login/authentication logic here.
-    // For simplicity, we'll just display the entered data.
+  const [errors,setErrors] = useState({})
+
+  const handleLogin = (event) => {
+
+    event.preventDefault();
+    setErrors(loginvalidation(loginData));
+  
     console.log('Logging in with data:', loginData);
-    hideLogin(); // Close the login modal
+    
   };
 
-  const handleSignup = () => {
-    // Add your actual signup/authentication logic here.
-    // For simplicity, we'll just display the entered data.
+  const handleSignup = (event) => {
+
+    event.preventDefault();
+    setErrors(Signupvalidation(signupData));
     console.log('Signing up with data:', signupData);
-    hideSignup(); // Close the signup modal
+    if(errors.username === "" && errors.email === "" && errors.password ==="") {
+      axios.post('http://localhost:8081/home', signupData)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+    }
+   
   };
 
   const navigateToQuiz = () => {
@@ -138,34 +153,45 @@ const Home = () => {
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
+            <form action="" onSubmit={handleLogin}>
             <div className="modal-body">
               <div className="form-group">
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Username"
+                  placeholder="Username or email"
                   value={loginData.username}
-                  onChange={(e) => setLoginData({ ...loginData, username: e.target.value })}
+                  onChange={(e) => setLoginData({ ...loginData, username: e.target.value , email: e.target.value })}
                 />
+                {errors.email && <span className='text-danger'> {errors.email}</span>}
               </div>
+              <br/>
               <div className="form-group">
                 <input
                   type="password"
                   className="form-control"
                   placeholder="Password"
-                  value={loginData.password}
+                  value={loginData.password} 
                   onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
                 />
+                {errors.password && <span className='text-danger'> {errors.password}</span>}
               </div>
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" onClick={hideLogin}>
                 Close
               </button>
-              <button type="button" className="btn btn-primary" onClick={handleLogin}>
+              <button type="submit" className="btn btn-primary">
                 Login
               </button>
+              <br/>
+              <p> Dont have account ? </p>
+              <button type="button" className="btn btn-primary" onClick={showSignup}>
+                Sign up
+              </button>
+              
             </div>
+            </form>
           </div>
         </div>
       </div>
@@ -180,6 +206,7 @@ const Home = () => {
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <form action="" onSubmit={handleSignup}>
       <div className="modal-body">
         <div className="form-group">
           <input
@@ -189,7 +216,9 @@ const Home = () => {
             value={signupData.username}
             onChange={(e) => setSignupData({ ...signupData, username: e.target.value })}
           />
+          {errors.username && <span className='text-danger'> {errors.username}</span>}
         </div>
+        <br/>
         <div className="form-group">
           <input
             type="email"  
@@ -198,7 +227,9 @@ const Home = () => {
             value={signupData.email}
             onChange={(e) => setSignupData({ ...signupData, email: e.target.value })}
           />
+          {errors.email && <span className='text-danger'> {errors.email}</span>}
         </div>
+        <br/>
         <div className="form-group">
           <input
             type="password"
@@ -207,16 +238,19 @@ const Home = () => {
             value={signupData.password}
             onChange={(e) => setSignupData({ ...signupData, password: e.target.value })}
           />
+          {errors.password && <span className='text-danger'> {errors.password}</span>}
         </div>
+        <br/>
       </div>
       <div className="modal-footer">
         <button type="button" className="btn btn-secondary" onClick={hideSignup}>
           Close
         </button>
-        <button type="button" className="btn btn-primary" onClick={handleSignup}>
+        <button type="submit" className="btn btn-primary">
           Sign Up
         </button>
       </div>
+      </form>
     </div>
   </div>
 </div>
