@@ -34,18 +34,19 @@ app.post('/signup', (req, res) => {
     const sql = "SELECT * FROM users WHERE `email` = ? AND `password` = ?";
     db.query(sql, [req.body.email, req.body.password], (err, data) => {
       if (err) {
-        console.error("Database error:", err); // Log the error for debugging
-        return res.status(500).json({ error: "Internal Server Error" });
+        console.error("Database error:", err);
+        return res.status(500).json({ message: "Internal Server Error" });
       }
-     if (data.length > 0){
-
-      return res.json("Success");
-      
-     }else{
-      return res.json("faile");
-     }
+      if (data.length > 0) {
+        const { username, email } = data[0];
+        return res.json({ message: "Success", username, email });
+      } else {
+        // Provide a meaningful message here
+        return res.status(401).json({ message: "Login failed, check credentials" });
+      }
     });
   });
+  
   
 
 app.listen(8081, ()=> {

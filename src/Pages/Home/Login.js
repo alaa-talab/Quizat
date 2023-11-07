@@ -1,11 +1,10 @@
-// Login.js
 import React, { useState } from 'react';
-import loginValidation from './LoginValidation'; // Import your validation function
+import loginValidation from './LoginValidation';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
-const Login = ({ showSignup }) => {
+const Login = ({ showSignup, onLoginSuccess }) => {
   const [loginData, setLoginData] = useState({
     email: '',
     password: '',
@@ -15,21 +14,27 @@ const Login = ({ showSignup }) => {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    setErrors(loginValidation(loginData));
+    const validationErrors = loginValidation(loginData);
+    setErrors(validationErrors);
 
-    if (errors.email === "" && errors.password === "") {
-      axios.post('http://localhost:8081/login', loginData)
-        .then((res) => {
-          if (res.data === "Success") {
-            console.log(res)
-            
-          } else {
-            alert("Login failed");
-          }
-        })
-        .catch((err) => console.log(err));
-    }
-  };
+    axios.post('http://localhost:8081/login', loginData)
+    .then((res) => {
+      if (res.data.message === "Success") {
+        onLoginSuccess({ username: res.data.username, email: res.data.email });
+      } else {
+        alert("Login failed: " + res.data.message);
+      }
+    })
+    .catch((err) => {
+      console.error("Login error:", err);
+      // Check if the error response has data and a message
+      if (err.response && err.response.data && err.response.data.message) {
+        alert("Login failed: " + err.response.data.message);
+      } else {
+        alert("An error occurred during login. Please try again later.");
+      }
+    });
+};
 
   return (
     <div>

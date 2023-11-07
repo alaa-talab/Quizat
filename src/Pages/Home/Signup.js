@@ -3,7 +3,8 @@ import SignupValidation from './SignupValidation';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Signup = ({ showLogin }) => {
+
+const Signup = ({ showLogin, hideSignup }) => {
   const [signupData, setSignupData] = useState({
     username: '',
     email: '',
@@ -14,21 +15,24 @@ const Signup = ({ showLogin }) => {
 
   const handleSignup = (event) => {
     event.preventDefault();
-    setErrors(SignupValidation(signupData));
-
-    if (errors.username === "" && errors.email === "" && errors.password === "") {
+    const validationErrors = SignupValidation(signupData);
+  
+    if (validationErrors.username === "" && validationErrors.email === "" && validationErrors.password === "") {
       axios.post('http://localhost:8081/signup', signupData)
         .then((res) => {
-         console.log(res);
-         
-            showLogin();
-          
+          console.log(res);
+          hideSignup(); // Hide signup modal on successful signup
+          showLogin(); // Show login modal
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.error(err);
+          // Handle error, e.g., show an alert or set an error message in state
+        });
+    } else {
+      setErrors(validationErrors); // Update the state with the validation errors
     }
   };
-
- 
+  
 
   return (
     
