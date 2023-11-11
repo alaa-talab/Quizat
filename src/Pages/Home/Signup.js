@@ -72,6 +72,7 @@ const Signup = ({ showLogin, hideSignup }) => {
               />
               {errors.password && <small className='text-danger'>{errors.password}</small>}
             </div>
+            <br/>
             <button type="submit" className="btn btn-primary signup-button w-100 rounded-3">Sign Up</button>
           </form>
        

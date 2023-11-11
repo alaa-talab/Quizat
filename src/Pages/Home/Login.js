@@ -16,7 +16,6 @@ const Login = ({ showSignup, onLoginSuccess }) => {
     event.preventDefault();
     const validationErrors = loginValidation(loginData);
     setErrors(validationErrors);
-
     axios.post('http://localhost:8081/login', loginData)
     .then((res) => {
       if (res.data.message === "Success") {

@@ -3,15 +3,16 @@ import { useHistory } from 'react-router-dom';
 import './Home.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import Login from './Login'; // Import the Login component
-import Signup from './Signup'; // Import the Signup component
+import Login from './Login'; 
+import Signup from './Signup'; 
 
 const Home = () => {
   const history = useHistory();
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showSignupModal, setShowSignupModal] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userData, setUserData] = useState({ username: '', email: '' });
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn') === 'true');
+  const [userData, setUserData] = useState(JSON.parse(localStorage.getItem('userData')) || { username: '', email: '' });
+  
 
   const showLogin = () => setShowLoginModal(true);
   const hideLogin = () => setShowLoginModal(false);
@@ -21,6 +22,8 @@ const Home = () => {
   const handleLoginSuccess = (userDetails) => {
     setIsLoggedIn(true);
     setUserData({ username: userDetails.username, email: userDetails.email });
+    localStorage.setItem('isLoggedIn', true);
+    localStorage.setItem('userData', JSON.stringify({ username: userDetails.username, email: userDetails.email }));
     hideLogin();
   };
 
@@ -33,10 +36,18 @@ const Home = () => {
   };
 
   const navigateToHome = () => history.push('/');
+  
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setUserData({ username: '', email: '' });
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('userData');
+    history.push('/');
+  };
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav className="navbar navbar-expand-lg ">
         <div className="container">
           <div
             className="navbar-brand"
@@ -49,6 +60,10 @@ const Home = () => {
           {isLoggedIn ? (
             <div className="navbar-text">
               {userData.username} ({userData.email})
+              <br/>
+              <button onClick={handleLogout} className="btn btn-primary">
+          Logout
+        </button>
             </div>
           ) : (
             <>
@@ -58,6 +73,7 @@ const Home = () => {
               <button onClick={showSignup} className="btn btn-primary">
                 Sign Up
               </button>
+             
             </>
           )}
         </div>
@@ -74,21 +90,25 @@ const Home = () => {
             <div className="feature-box">
               <h2>Quizzes</h2>
               <p>Test your knowledge with a wide range of quizzes on various topics. Have fun while learning!</p>
+              <div title={!isLoggedIn ? "Login to get access" : ""}>
               <button onClick={navigateToQuiz} className="btn btn-primary" disabled={!isLoggedIn}>
                 Take a Quiz
               </button>
             </div>
           </div>
+          </div>
           <div className="col-md-6">
             <div className="feature-box">
               <h2>Resume Builder</h2>
               <p>Create a professional resume that stands out. Land your dream job with our easy-to-use resume builder.</p>
+              <div title={!isLoggedIn ? "Login to get access" : ""}>
               <button onClick={navigateToRusme} className="btn btn-primary" disabled={!isLoggedIn}>
                 Build Resume
               </button>
             </div>
           </div>
         </div>
+      </div>
       </div>
 
       <footer className="bg-dark text-light text-center py-3">
