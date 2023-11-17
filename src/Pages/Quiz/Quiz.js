@@ -31,8 +31,8 @@ const Quiz = ({ name, questions, score, setScore, setQuestions }) => {
         <>
           <div className="quizInfo">
             <span>{questions[currQues].category}</span>
-            <span>
-              {/* {questions[currQues].difficulty} */}
+            <span>{questions[currQues].difficulty}</span>
+                 <span>
               Score : {score}
             </span>
           </div>

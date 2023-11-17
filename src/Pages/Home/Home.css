@@ -91,3 +91,34 @@ body, html {
   text-align: center;
   font-size: 1rem;
 }
+
+/* Custom CSS file */
+.btn-hover-effect:hover {
+  transform: scale(1.05); /* Slightly enlarge the buttons on hover */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Add shadow for depth */
+}
+
+/* If you want to add space between the buttons */
+.btn-margin-right {
+  margin-right: 8px; /* Adds spacing to the right of the button */
+}
+/* Custom CSS file */
+.btn-login {
+  background-color: #0A78B8;
+  color: #0A78B8;
+}
+
+.btn-login:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.btn-signup {
+  background-color: #1E4387;
+  color: #1E4387;
+}
+
+.btn-signup:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}

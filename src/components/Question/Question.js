@@ -33,7 +33,7 @@ const Question = ({
 
   const handleNext = () => {
     if (currQues > 8) {
-      history.push("/result");
+      history.push('/result');
     } else if (selected) {
       setCurrQues(currQues + 1);
       setSelected();

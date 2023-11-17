@@ -58,31 +58,54 @@ const Home = () => {
             <img src="/Quizat-01 1.png" className="banner" alt="quiz app" />
           </div>
           {isLoggedIn ? (
-            <div className="navbar-text">
-              {userData.username} ({userData.email})
-              <br/>
-              <button onClick={handleLogout} className="btn btn-primary">
-          Logout
-        </button>
-            </div>
-          ) : (
-            <>
-              <button onClick={showLogin} className="btn btn-primary">
-                Login
-              </button>
-              <button onClick={showSignup} className="btn btn-primary">
-                Sign Up
-              </button>
-             
-            </>
-          )}
+  <div className="navbar-text">
+    {userData.username} ({userData.email})
+    <br/>
+    <button onClick={handleLogout} className="btn btn-hover-effect" style={{ backgroundColor: '#0A78B8', color: 'white' }}>
+      Logout
+    </button>
+  </div>
+) : (
+  <div className="btn-group"> {/* Wrap buttons in a btn-group for inline display */}
+    <button onClick={showLogin} className="btn btn-hover-effect" style={{ backgroundColor: '#0A78B8', color: 'white', marginRight: '8px' }}>
+      Login
+    </button>
+    <button onClick={showSignup} className="btn btn-hover-effect" style={{ backgroundColor: '#1E4387', color: 'white' }}>
+      Sign Up
+    </button>
+  </div>
+)}
+
+
+
         </div>
       </nav>
 
-      <div className="jumbotron text-center">
-        <h1>Welcome to Quizat</h1>
-        <p>Your one-stop destination for quizzes and resume building</p>
-      </div>
+      <div className="container-fluid py-5" style={{ backgroundColor: '#FDB713' }}>
+  <div className="row justify-content-center">
+    <div className="col-12 col-lg-6 d-flex justify-content-center"> {/* Use 'col-lg-6' for large screens */}
+      <img src="/quiz-01.png" alt="quiz app" className="img-fluid" style={{ maxWidth: '100%', height: 'auto' }} />
+    </div>
+  </div>
+  <div className="row">
+    <div className="col px-4"> {/* 'px-4' adds padding on the left and right */}
+      <h1 className="text-center text-white display-4"> {/* 'display-4' is a responsive heading size */}
+        Welcome to the ultimate destination for knowledge and fun –
+        <span style={{ color: '#1E4387', fontWeight: 'bold' }}>Quizat!</span>
+      </h1>
+    </div>
+  </div>
+  <div className="row">
+    <div className="col px-4"> {/* 'px-4' adds padding on the left and right */}
+      <p className="text-center text-white lead">
+        Explore diverse topics, test your knowledge, and enjoy hours of fun. Whether solo or with friends, Quizat is your go-to destination. Join our community, unlock achievements, and start your journey of discovery today!
+      </p>
+    </div>
+  </div>
+</div>
+
+
+
 
       <div className="container">
         <div className="row">

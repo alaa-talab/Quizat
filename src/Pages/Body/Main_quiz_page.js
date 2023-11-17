@@ -1,16 +1,23 @@
 import { Button, MenuItem, TextField } from "@material-ui/core";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Categories from "../../Data/Categories";
 import "./Main_quiz_page.css";
 
-const Main_quiz_page = ({ name, setName, fetchQuestions }) => {
+const Main_quiz_page = ({ fetchQuestions }) => {
   const [category, setCategory] = useState("");
   const [difficulty, setDifficulty] = useState("");
   const [error, setError] = useState(false);
+  const [name, setName] = useState("");
 
   const history = useHistory();
+
+  // Extract the username from localStorage
+  useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem('userData')) || {};
+    setName(userData.username || 'Guest'); // Fallback to 'Guest' if no username is found
+  }, []);
 
   const handleSubmit = () => {
     if (!category || !difficulty || !name) {
@@ -19,7 +26,11 @@ const Main_quiz_page = ({ name, setName, fetchQuestions }) => {
     } else {
       setError(false);
       fetchQuestions(category, difficulty);
-      history.push("/quiz");
+      history.push({
+        pathname: "/quiz",
+        state: { category: category } 
+        // Pass the category to the quiz page
+      });
     }
   };
 
@@ -27,14 +38,12 @@ const Main_quiz_page = ({ name, setName, fetchQuestions }) => {
     <div className="content">
       <div className="settings">
         <span style={{ fontSize: 30 }}>Quiz Settings</span>
+        {/* Display the user's name here */}
+        <div className="user-welcome" style={{ fontSize: '24px', fontWeight: 'bold', margin: '20px 0' }}>
+          Welcome, {name}!
+        </div>
         <div className="settings__select">
           {error && <ErrorMessage>Please Fill all the feilds</ErrorMessage>}
-          <TextField
-            style={{ marginBottom: 25 }}
-            label="Enter Your Name"
-            variant="outlined"
-            onChange={(e) => setName(e.target.value)}
-          />
           <TextField
             select
             label="Select Category"
