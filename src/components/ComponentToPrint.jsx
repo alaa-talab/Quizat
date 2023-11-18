@@ -33,15 +33,15 @@ export class ComponentToPrint extends React.PureComponent {
                 <div className="section">
                     <div className="left-section">
                         {  (this.props.exp3.postname==='' && this.props.exp2.postname==='' && this.props.exp.postname==='' && this.props.exp4.postname==='' && this.props.exp5.postname==='' && this.props.exp6.postname==='')?null:<div className="experiences">
-                            <h2 className="section-heading" style={{color:this.props.primary}} >Experience</h2>
+                            <h2 className="section-heading" style={{color:this.props.primary}} >الخبرات</h2>
                             {(this.props.exp.postname === '') ? null : <div className="div">
                                 <h2 style={{ fontSize: '1rem', color: this.props.secondary, textTransform: 'capitalize' }}>{this.props.exp.postname}</h2>
                                 <h2 style={{ fontSize: '1rem', fontWeight: '400' }}>{this.props.exp.company}</h2>
                                 <p style={{ fontSize: '13px', color: 'gray', fontWeight: '600', marginLeft: '1rem', fontStyle: 'italic' }} className="fromto">
                                     {this.props.exp.from} - {this.props.exp.to}
                                 </p>
-                                <h5 style={{ fontWeight: '400' }}>Experience:</h5>
-                                <p style={{}} >- {this.props.exp.expdesc}</p>
+                                
+                                
                             </div>}
                             {(this.props.exp2.postname === '') ? null : <div className="div">
                                 <h2 style={{ fontSize: '1rem',color: this.props.secondary}}>{this.props.exp2.postname}</h2>
@@ -49,8 +49,7 @@ export class ComponentToPrint extends React.PureComponent {
                                 <p style={{ fontSize: '13px', color: 'gray', fontWeight: '600', marginLeft: '1rem', fontStyle: 'italic' }} className="fromto">
                                     {this.props.exp2.from} - {this.props.exp2.to}
                                 </p>
-                                <h5 style={{ fontWeight: '400' }}>Experience:</h5>
-                                <p style={{}} >- {this.props.exp2.expdesc}</p>
+                              
                             </div>}
                             {(this.props.exp3.postname === '') ? null : <div className="div">
                                 <h2 style={{ fontSize: '1rem', color: this.props.secondary }}>{this.props.exp3.postname}</h2>
@@ -94,7 +93,7 @@ export class ComponentToPrint extends React.PureComponent {
                             if(this.props.edu[education].school !== undefined && this.props.edu[education].school !== '' && !flag){
                                 return( 
                                     <div className="education">
-                                        <h2 className="section-heading" style={{color: this.props.primary}} >Education</h2>
+                                        <h2 className="section-heading" style={{color: this.props.primary}} >المستوى التعليمي</h2>
                                      </div>
                                 )
                             }
@@ -111,8 +110,7 @@ export class ComponentToPrint extends React.PureComponent {
                                         <p style={{ fontSize: '13px', color: 'gray', fontWeight: '600', marginLeft: '1rem', fontStyle: 'italic' }} className="fromto">
                                             {this.props.edu[education].from} - {this.props.edu[education].to}
                                         </p>
-                                        <h5 style={{ fontWeight: '400' }}>Achievements:</h5>
-                                        <p style={{}} >- {this.props.edu[education].ach}</p>
+                                        
                                     </div>
                                 )
                             }
@@ -121,7 +119,7 @@ export class ComponentToPrint extends React.PureComponent {
                     </div>
                     <div className="right-section">
                         {this.props.skills.length === 0 ? null : <div className="skills">
-                            <h2 className="section-heading" style={{color: this.props.primary}}>Skills</h2>
+                            <h2 className="section-heading" style={{color: this.props.primary}}>مهارات</h2>
                             <div>
                                 {
                                     this.props.skills.map((item) => {
