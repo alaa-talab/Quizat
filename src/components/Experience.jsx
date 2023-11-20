@@ -20,11 +20,10 @@ const WorkExp=({number,exp,setexp,postname,company,from,to,expdesc})=>{
                 <span className="details" style={{ marginLeft: '1rem', width: '20%' }} >To</span>
                 <input type="text" placeholder="Your Subtitle" style={{ width: '50%', marginLeft: '0' }}  value={to} onChange={e=>setexp({...exp,to:e.target.value})} />
             </div>
-           {/* <div className="input-box textarea">
+            <div className="input-box textarea">
                 <span className="details">Experience</span>
                 <textarea type="text" placeholder="Write your Experience Here"  value={expdesc} onChange={e=>setexp({...exp,expdesc:e.target.value})} />
-            </div> 
-           */} 
+            </div>
         </div>
         </>
     )
