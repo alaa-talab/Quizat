@@ -1,40 +1,39 @@
 import { Button } from "@material-ui/core";
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 import { useHistory } from "react-router-dom"; 
+import { useLocation } from 'react-router-dom';
 import "./Result.css";
 
-const Result = ({ score, location }) => {
+const Result = ({ score }) => {
   const history = useHistory();
-  const [category, setCategory] = useState("");
+  const location = useLocation();
+  const category = location.state?.category;
+
+ 
+ 
 
   useEffect(() => {
     if (!score) {
       history.push("/");
     }
-    // Extract category from location state
-    if (location && location.state) {
-      setCategory(location.state.category);
-      
-    }
-
-  
+    
   }, [score, history, location]);
 
   const navigateToHome = () => {
     history.push('/');
   };
 
-  // Function to determine and display resources based on score and category
+  
   const displayResources = () => {
     if (score <= 5) {
-      return <div>Resource to start learning about {category}</div>;
-    } else if (score > 5 && score < 9) { 
-      return <div>Resource to learn more about {category}</div>;
+      return <div className="resource-info">Resource to start learning about {category}</div>;
+    } else if (score > 5 && score < 9) {
+      return <div className="resource-info">Resource to learn more about {category}</div>;
     } else if (score >= 9) {
-      return <div>Resource to take a certificate about {category}</div>;
+      return <div className="resource-info">Resource to take a certificate about {category}</div>;
     }
   };
-
+  
   return (
     <div className="result">
       <span className="title">Final Score : {score}</span>

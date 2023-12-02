@@ -8,6 +8,8 @@ const Quiz = ({ name, questions, score, setScore, setQuestions }) => {
   const [currQues, setCurrQues] = useState(0);
 
   useEffect(() => {
+    console.log("Current Question Index:", currQues);
+    console.log("Questions:", questions);
     setOptions(
       questions &&
         handleShuffle([
@@ -27,7 +29,7 @@ const Quiz = ({ name, questions, score, setScore, setQuestions }) => {
     <div className="quiz">
       <span className="subtitle">Welcome, {name}</span>
 
-      {questions ? (
+      {questions && questions.length > 0 ? (
         <>
           <div className="quizInfo">
             <span>{questions[currQues].category}</span>
@@ -45,6 +47,7 @@ const Quiz = ({ name, questions, score, setScore, setQuestions }) => {
             score={score}
             setScore={setScore}
             setQuestions={setQuestions}
+            category={questions[currQues]?.category}
           />
         </>
       ) : (
