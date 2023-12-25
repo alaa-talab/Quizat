@@ -1,9 +1,10 @@
 /* General Styles */
 body, html {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+  font-family: "Fredoka One-Regular", Helvetica; /* Modern font */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: #f8f9fa;
 }
 
 /* Navigation Bar */
@@ -122,3 +123,283 @@ body, html {
   transform: scale(1.05);
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
+.imgstyle {
+  height: 75px;
+  width: 75px;
+  left: 0;
+  object-fit: cover;
+  position: fixed;
+  top: 0;
+}
+
+.quiz-header {
+  font-size: 4rem; /* Larger font size for better readability */
+  color: #1E4387; /* Darker color for better contrast */
+  text-align: center;
+  margin-bottom: 2rem; /* Adds space below the header */
+  font-weight: 700;
+}
+
+/* Card styling to make it more visually appealing */
+.card.quiz-card {
+  border: none;
+  border-radius: 60px; /* Slightly rounded corners for a softer look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for cards */
+.card.quiz-card:hover {
+  transform: translateY(-5px); /* Slightly raise the card on hover */
+}
+
+/* Image styling within cards */
+.quiz-card img {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  height: auto; /* Maintain aspect ratio */
+  width: 100%; /* Make image responsive */
+  
+}
+
+/* Styling for the quiz steps */
+.quiz-step {
+  font-size: 1.25rem; /* Larger font size for steps */
+  color: #0056b3; /* Brand color for emphasis */
+  margin-bottom: 0.5rem;
+}
+
+/* Paragraph description in cards */
+.quiz-desc {
+  color: #666;
+  font-size: 1rem; /* Standard font size for readability */
+}
+
+/* Button styling to make it stand out */
+.quiz-button {
+  background-color: #1E4387;
+  border: none;
+  border-radius: 30px; /* More rounded corners for the button */
+  padding: 15px 40px; /* Larger padding for a bigger button */
+  color: white;
+  font-weight: bold;
+  margin-top: 30px;
+  display: block;
+  width: auto; /* Auto width to fit content */
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer; /* Cursor changes to pointer to indicate it's clickable */
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  outline: none; /* Removes the default focus outline */
+}
+
+
+
+.quiz-button:hover {
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25); /* Larger shadow appears on hover */
+  background-color: #004a9f; /* Slightly darker background on hover for visual feedback */
+}
+.quiz-button:active {
+  transform: translateY(2px); /* Button appears pressed down when active */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Smaller shadow to give a 'pressed' effect */
+}
+.quiz-button:focus {
+  box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.5); /* A blue outline to indicate focus */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .quiz-header {
+    font-size: 2rem; /* Smaller font size on smaller devices */
+  }
+  .quiz-button {
+    padding: 10px 30px; /* Slightly reduce padding on smaller screens */
+  }
+  
+
+
+}
+
+/* Responsive grid adjustments */
+@media (max-width: 992px) {
+  .row {
+    justify-content: center; /* Center cards on smaller screens */
+  }
+}
+.tooltip-message {
+  position: absolute;
+  background-color: #ffd700;
+  color: black;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  visibility: hidden; /* Hide by default */
+  opacity: 0;
+  transition: visibility 0.2s, opacity 0.2s ease-in-out;
+}
+
+.tooltip-message::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #ffd700 transparent transparent transparent;
+}
+
+.button-container:hover .tooltip-message {
+  visibility: visible;
+  opacity: 1;
+}
+.top-image {
+  max-width: 600px; /* or whatever maximum size you prefer */
+  margin: 0 auto; /* This will center the div if it's smaller than the parent */
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  overflow: hidden;
+}
+
+.top-image img {
+  width: 100%; /* Make image responsive: it will scale with its container */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Removes any default inline spacing */
+}
+
+@media (max-width: 768px) {
+  .top-image {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-image {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+}
+/* Base style for the button */
+.resume-btn {
+  background-color: #407BFF; /* Primary button color */
+  color: white; /* Text color */
+  padding: 10px 20px; /* Padding for size */
+  border: none; /* No border */
+  border-radius: 50px; /* Rounded corners for a friendlier look */
+  cursor: pointer; /* Changes the cursor to a pointer */
+  transition: all 0.3s ease; /* Smooth transition for hover and active states */
+  outline: none; /* Removes the outline */
+  font-size: 16px; /* Adjust as needed */
+}
+
+/* Hover state for the button */
+.resume-btn:hover {
+  background-color: #003A82; /* Slightly darker shade on hover */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25); /* Larger shadow appears on hover */
+}
+
+/* Active state for the button */
+.resume-btn:active {
+  background-color: #004494; /* Even darker shade for a pressed effect */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Smaller shadow to give a 'pressed' effect */
+  transform: translateY(2px); /* Moves the button down slightly */
+}
+.resume-btn:focus {
+  box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.5); /* A blue outline to indicate focus */
+}
+.faq-section {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.faq {
+  background: #f9f9f9;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.faq.open .faq-answer {
+  margin-top: 10px;
+}
+
+.faq-question {
+  margin: 0;
+  font-weight: bold;
+}
+
+.faq-answer {
+  color: #333;
+}
+.card-header:hover {
+  background-color: #0056b3; /* A shade darker than the primary color for a subtle effect */
+}
+#about-us {
+  background-color: #f8f9fa;
+  border-top: 2px solid #dee2e6;
+  border-bottom: 2px solid #dee2e6;
+}
+
+#about-us .image-container {
+  overflow: hidden; /* Ensures the hover effect doesn't spill out of the border-radius */
+}
+
+#about-us .image {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border-radius: 0.5rem;
+}
+#about-us .h2 {
+  color: #1e4387;
+}
+#about-us .image-container:hover .image {
+  transform: scale(1.05); /* Slightly enlarges the image */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Adds shadow for depth */
+}
+
+#about-us h2, #about-us p {
+  transition: color 0.3s ease-in-out;
+}
+
+#about-us:hover h2 {
+  color: #004085; /* Darkens the heading on hover */
+}
+
+#about-us:hover p {
+  color: #343a40; /* Darkens the paragraph text on hover */
+}
+
+#about-us .lead {
+  font-size: 1.05rem; /* Slightly larger than default for readability */
+  color: #495057;
+}
+.animated-background {
+  background: linear-gradient(-45deg, #e5f7f9, #e1f1f8, #ffffff, #98d8f1);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.image-container img {
+  transition: transform 0.3s ease;
+}
+
+.image-container:hover img {
+  transform: scale(1.03); /* Slightly increase size on hover */
+}
+

@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useRef, useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 import "./Homepage.css";
 import Info from "./Info";
 import Skills from "./Skills";
@@ -17,12 +18,17 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { ColorPicker } from "material-ui-color";
 
 
+
+
 //Homepage
 function Homepage() {
   const componentRef = useRef();
   const Print = useReactToPrint({
     content: () => componentRef.current,
   });
+
+  const history = useHistory();
+const navigateToHome = () => history.push('/');
 
   const handlePrint = () => {
     if (isEmpty()) {
@@ -512,16 +518,15 @@ function Homepage() {
   return (
     <div id="main">
       <header className="header">
-        <h2>Hash/Hub</h2>
-        <h1>
-          📄<span>Resume Maker </span>{" "}
-        </h1>
-        <div className="right">
-          <a href="https://github.com/vedant-jain03/Resume-Maker">Contribute</a>
-          <a href="https://github.com/vedant-jain03/Resume-Maker">
-            Give us star
-          </a>
-        </div>
+      <div
+    onClick={navigateToHome}
+    className="navbar-brand"
+    style={{ cursor: 'pointer' }}
+    role="button" /* 'role' should be 'button' if it's clickable for better accessibility */
+>
+    <img src="/Quizat-01 x1.png" className="banner" alt="Quiz app logo" />
+</div>
+
       </header>
       <main className="maincomponent">
         <div className="left">
@@ -674,6 +679,7 @@ function Homepage() {
               desc4={project4.desc}
             />
           ) : null}
+          <br></br>
           {nav === "Achievements" ? (
             <Achievements
               ach={ach}
@@ -835,8 +841,8 @@ function Homepage() {
           </div>
         </div>
       </main>
-      <footer className="footer">
-        <p>Copyright © 2021. All rights reserved.</p>
+      <footer className="footer bg-dark text-light text-center py-3">
+        <p>© 2023 Quizat Team</p>
       </footer>
     </div>
   );

@@ -3,6 +3,8 @@ import loginValidation from './LoginValidation';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 const Login = ({ showSignup, onLoginSuccess }) => {
   const [loginData, setLoginData] = useState({
@@ -11,6 +13,12 @@ const Login = ({ showSignup, onLoginSuccess }) => {
   });
 
   const [errors, setErrors] = useState({});
+  const [passwordShown, setPasswordShown] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setPasswordShown(!passwordShown);
+  };
+  
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -51,16 +59,21 @@ const Login = ({ showSignup, onLoginSuccess }) => {
     </div>
     <br/>
     <div className="form-group">
-    <label className="form-label">Password</label>
-      <input
-        type="password"
-        placeholder="Password"
-        className="form-control"
-        value={loginData.password}
-        onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
-      />
-      {errors.password && <small className="text-danger">{errors.password}</small>}
-    </div>
+  <label className="form-label">Password</label>
+  <div className="input-group">
+    <input
+      type={passwordShown ? "text" : "password"}
+      placeholder="Password"
+      className="form-control"
+      value={loginData.password}
+      onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
+    />
+    <span className="input-group-text" onClick={togglePasswordVisibility}>
+      <FontAwesomeIcon icon={passwordShown ? faEyeSlash : faEye} />
+    </span>
+  </div>
+  {errors.password && <small className="text-danger">{errors.password}</small>}
+</div>
     <div className="form-check">
   
   <label className="form-check-label" htmlFor="rememberMe">

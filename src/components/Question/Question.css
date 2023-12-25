@@ -58,3 +58,47 @@
   color: white;
   box-shadow: 0 0 1px black;
 }
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Adjust elements spacing */
+  padding: 20px; /* Add some padding */
+  margin-top: 20px; /* Space it out from other elements */
+  background: linear-gradient(90deg, rgba(6, 145, 251, 1) 0%, rgba(50, 50, 50, 1) 100%); /* Cool gradient background */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25); /* Subtle shadow */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+
+
+.controls span {
+  font-size: 24px; /* Larger font size */
+  color: white; /* Light text color for better contrast */
+  font-weight: bold; /* Make the font bold */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); /* Text shadow for depth */
+}
+/* Button Styles */
+.controls .button {
+  background: linear-gradient(145deg, #037fff, #0acffe); /* Gradient background */
+  color: white; /* White text color */
+  border: none; /* Remove default border */
+  padding: 10px 20px; /* Padding inside the button */
+  border-radius: 20px; /* Rounded corners */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  font-weight: bold; /* Bold text */
+  text-transform: uppercase; /* Uppercase text */
+  cursor: pointer; /* Cursor indicates it's clickable */
+  margin: 0 10px; /* Margin to space out buttons */
+}
+
+.controls .button:hover {
+  background: linear-gradient(145deg, #0acffe, #037fff); /* Invert gradient on hover */
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3); /* Increase shadow on hover */
+  transform: translateY(-2px); /* Slightly raise the button */
+}
+
+.controls .button:active {
+  transform: translateY(1px); /* Press down the button when active/clicked */
+}

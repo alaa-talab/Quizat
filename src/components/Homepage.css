@@ -1,3 +1,38 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the content */
+    padding: 1rem; /* Add some padding */
+    background: #ffffff; /* Adjust the background color as needed */
+    color: white; /* Adjust text color as needed */
+}
+
+.navbar-brand {
+    cursor: pointer;
+    display: inline-block; /* Makes it align nicely with text or other inline elements */
+    /* Add more styles as needed */
+}
+
+.banner {
+    max-width: 100px; /* Adjust the size of your logo */
+    height: auto; /* Maintain aspect ratio */
+    /* Add more styles as needed */
+}
+
+.navbar-brand {
+    display: inline-block; /* or flex, depending on your layout */
+    cursor: pointer; /* already set inline */
+    /* Add more styles as needed */
+}
+
+.banner {
+    max-width: 100%; /* ensures the image is never more than 100% of its container */
+    height: auto; /* maintains the aspect ratio */
+    /* Add more styles as needed */
+}
+
+
+
 *{
     margin: 0;
     padding: 0;
@@ -7,51 +42,7 @@
     background: #1c272b;
     height: 100vh;
 }
-#main .header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid gray;
-    padding: 0 3rem;
-    height: 10%;
-}
-#main .header h2{
-    color: white;
-}
-#main .header h1{
-    color: #58a6ff;
-    font-size: 2rem;
-    text-transform: uppercase;
-    letter-spacing: 4px;
 
-}
-#main .header h1 span{
-    text-shadow: 0 0 5px rgb(0 0 0);
-}
-#main .header .right a{
-    position: relative;
-    display: inline-block;
-    padding: 5px 16px;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 20px;
-    white-space: nowrap;
-    vertical-align: middle;
-    cursor: pointer;
-    user-select: none;
-    border-radius: 3px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-color: #58a6ff;
-    color: white;
-    text-decoration: none;
-    margin-right: 1rem;
-    transition: all 0.3s ease-in-out;
-}
-#main .header .right a:hover {
-    opacity: 0.93;
-}
 #main .maincomponent{
     display: flex;
     height: 85vh;
@@ -77,8 +68,8 @@
   }
 #main .maincomponent .left .navbar{
     display: flex;
-    height: 7%;
-    background: #58a6ff;
+    height: 15%;
+    background: #0A78B8;
 }
 #main .maincomponent .left .navbar li{
     color: white;
@@ -88,6 +79,8 @@
     padding: 10px 0;
     font-weight: bold;
     cursor: pointer;
+    border-radius: 100%;
+    
 }
 
 #main .maincomponent .left .navbar li:nth-child(1){
@@ -95,7 +88,8 @@
 }
 #main .maincomponent .left .navbar .active{
     background-color: white;
-    color: #58a6ff;
+    color: #0A78B8;
+    box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.3);
 }
 #main .maincomponent .right{
     flex: 0.60;
@@ -120,7 +114,7 @@
     position: absolute;
     width: 10%;
     height: 3px;
-    background-color: #58a6ff;
+    background-color: #0A78B8;
     left: 3.2%;
     top: 100%;
 }
@@ -139,7 +133,7 @@
     height: 7rem;
     color: white;
     font-weight: 300;
-    border: 1px solid #58a6ff;
+    border: 1px solid #0A78B8;
     outline: none;
     font-size: 17px;
     padding: 7px 10px;
@@ -160,7 +154,7 @@
     height: 2rem;
     color: white;
     font-weight: 300;
-    border-bottom: 1px solid #58a6ff;
+    border-bottom: 1px solid #0A78B8;
     outline: none;
     font-size: 17px;
 }
@@ -209,7 +203,7 @@
     transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     border-radius: 50%;
     color: white;
-    border: 1px solid #58a6ff;
+    border: 1px solid #0A78B8;
 }
 .form > h2{
     float: left;
@@ -223,7 +217,7 @@
     position: absolute;
     width: 10%;
     height: 1px;
-    background-color: #58a6ff;
+    background-color: #0A78B8;
     left: 0.2%;
     top: 100%;
 }
@@ -239,7 +233,7 @@
     margin-top: 1rem;
     color: white;
     border-radius: 50%;
-    border: 2px solid #58a6ff;
+    border: 2px solid #0A78B8;
     width: 8%;
     background: none;
     display: flex;
@@ -249,7 +243,7 @@
 .form .achivelist{
     padding: .5rem;
     border-radius: 5px;
-    border: 1px solid #58a6ff;
+    border: 1px solid #0A78B8;
     margin-bottom: 1rem;
     width: 100%;
     overflow: hidden;
@@ -276,6 +270,7 @@
 #main .maincomponent .right .resume-preview{
     width: 100%;
     background: white;
+    
 }
 
 .fontpicker-div{
@@ -310,7 +305,7 @@
     border-radius: 3px;
     -webkit-appearance: none;
     appearance: none;
-    background-color: #58a6ff;
+    background-color: #0A78B8;
     color: white;
     text-decoration: none;
     margin-bottom: 1rem;
@@ -356,7 +351,7 @@
 }
 /* footer */
 .footer {
-    background: #1c272b;
+    background: #2E3B55;
     padding: 0.6rem 0;
     border-top: 1px solid gray;
 }
@@ -368,31 +363,13 @@
 }
 
 /* responsive */
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 600px) {
     #main {
         background: #1c272b;
         height: 119vh;
         width: 120%;
     }
-    #main .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 1px solid gray;
-        padding: 0 1rem;
-        height: 7%;
-    }
-    #main .header h2 {
-        color: white;
-        font-size: 12px;
-    }
-    #main .header h1 span {
-        text-shadow: 0 0 5px rgb(0 0 0);
-        font-size: 20px;
-    }
-    #main .header .right a{
-        display: none;
-    }
+    
     #main .maincomponent {
         display: flex;
         height: 100vh;
@@ -401,8 +378,9 @@
     }
     #main .maincomponent .left .navbar {
         display: flex;
-        height: 13%;
-        background: #58a6ff;
+        height: auto;
+        background: #0A78B8;
+        flex-direction: row;
     }
     #main .maincomponent .left {
         border-bottom: 1px solid gray;
@@ -410,14 +388,19 @@
     .footer {
     margin-top: 15px;
     }
+    .header {
+        padding: 0.5rem; /* Reduce padding on smaller screens */
+        flex-direction: column; /* Stack elements vertically */
+    }
+
+
+    .navbar-brand {
+        margin-bottom: 0.5rem; /* Add some space between the logo and the next element */
+    }
+
+    .banner {
+        max-width: 150px; /* Make the logo smaller on smaller screens */
+        text-align: center;
+    }
   }
-  #main .maincomponent .left .navbar li {
-    color: white;
-    list-style: none;
-    width: 20%;
-    text-align: center;
-    padding: 10px 0;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 13px;
-}
+ 

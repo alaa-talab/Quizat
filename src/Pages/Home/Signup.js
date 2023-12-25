@@ -9,6 +9,7 @@ const Signup = ({ showLogin, hideSignup }) => {
     username: '',
     email: '',
     password: '',
+    confirmPassword: ''
   });
 
   const [errors, setErrors] = useState({});
@@ -17,12 +18,12 @@ const Signup = ({ showLogin, hideSignup }) => {
     event.preventDefault();
     const validationErrors = SignupValidation(signupData);
   
-    if (validationErrors.username === "" && validationErrors.email === "" && validationErrors.password === "") {
-      axios.post('http://localhost:8081/signup', signupData)
-        .then((res) => {
-          console.log(res);
-          hideSignup(); // Hide signup modal on successful signup
+    if (validationErrors.username === "" && validationErrors.email === "" && validationErrors.password === "" && validationErrors.confirmPassword === "" ) {
+      hideSignup(); // Hide signup modal on successful signup
           showLogin(); // Show login modal
+      axios.post('http://localhost:8081/signup', signupData).then((res) => {
+          console.log(res);
+          
         })
         .catch((err) => {
           console.error(err);
@@ -72,6 +73,17 @@ const Signup = ({ showLogin, hideSignup }) => {
               />
               {errors.password && <small className='text-danger'>{errors.password}</small>}
             </div>
+            <div className="form-group">
+  <label className="form-label">Confirm Password</label>
+  <input
+    type="password"
+    className="form-control"
+    placeholder="Confirm Password"
+    value={signupData.confirmPassword}
+    onChange={(e) => setSignupData({ ...signupData, confirmPassword: e.target.value })}
+  />
+  {errors.confirmPassword && <small className='text-danger'>{errors.confirmPassword}</small>}
+</div>
             <br/>
             <button type="submit" className="btn btn-primary signup-button w-100 rounded-3">Sign Up</button>
           </form>
