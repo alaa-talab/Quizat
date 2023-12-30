@@ -1,10 +1,14 @@
 import { Button } from "@material-ui/core";
-import { useEffect} from "react";
+import React, { useEffect } from 'react';
 import { useHistory } from "react-router-dom"; 
 import { useLocation } from 'react-router-dom';
 import "./Result.css";
+import { useContext } from 'react';
+import { AuthContext } from '../Home/AuthContext';
+import axios from 'axios';
 
 const Result = ({ score }) => {
+  const { userData } = useContext(AuthContext);
   const history = useHistory();
   const location = useLocation();
   const category = location.state?.category;
@@ -18,11 +22,25 @@ const Result = ({ score }) => {
  
 
   useEffect(() => {
-    if (!score) {
-      history.push("/");
-    }
-    
-  }, [score, history, location]);
+    if (!userData.id || !score) { // Check if userData.id is available
+        history.push("/");
+      } else {
+        // Submit score and category to the server
+        const submitScore = async () => {
+          try {
+            await axios.post('http://localhost:8081/submitScore', {
+              userId: userData.id,
+              score: score,
+              category: category,
+            });
+          } catch (error) {
+            console.error('Error submitting score:', error);
+          }
+        };
+  
+        submitScore();
+      }
+    }, [score, history, userData, category]);
 
   const navigateToHome = () => {
     history.push('/');
@@ -106,7 +124,7 @@ const Result = ({ score }) => {
 };
   return (
     <div className="result">
-      <span className="title">Final Score : {score}</span>
+      <span className="title">Final Score : {score} </span>
       {displayResources()}
       <Button
         variant="contained"

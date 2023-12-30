@@ -37,4 +37,4 @@ function SignupValidation(signupData) {
     return error;
 }
 
-export default SignupValidation;
+module.exports = SignupValidation;

@@ -27,7 +27,7 @@ const Login = ({ showSignup, onLoginSuccess }) => {
     axios.post('http://localhost:8081/login', loginData)
     .then((res) => {
       if (res.data.message === "Success") {
-        onLoginSuccess({ username: res.data.username, email: res.data.email });
+        onLoginSuccess({ username: res.data.username, email: res.data.email , id: res.data.id });
       } else {
         alert("Login failed: " + res.data.message);
       }

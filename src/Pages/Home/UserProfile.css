@@ -1,0 +1,18 @@
+/* UserProfile.css */
+.container {
+    max-width: 800px; /* Adjust as per your design */
+}
+
+.user-info, .edit-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.edit-form input {
+    margin-bottom: 10px; /* Spacing between inputs */
+}
+
+.edit-form button {
+    width: 100%; /* Full width button */
+}

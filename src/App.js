@@ -2,13 +2,16 @@ import axios from "axios";
 import { useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
+import { AuthProvider } from './Pages/Home/AuthContext';
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import MainQuizPage from "./Pages/Body/Main_quiz_page";
 import Home from "./Pages/Home/Home";
 import Quiz from "./Pages/Quiz/Quiz";
 import Result from "./Pages/Result/Result";
-import Homepage from "./components/Homepage"
+import Homepage from "./components/Homepage";
+import UserProfile from "./Pages/Home/UserProfile";
+
 
 function App() {
   const [questions, setQuestions] = useState();
@@ -26,7 +29,7 @@ function App() {
   };
 
   return (
-    
+    <AuthProvider>
     <BrowserRouter>
     <Switch>
       <Route path="/Body">
@@ -63,8 +66,12 @@ function App() {
       <Route path="/Homepage" >
         <Homepage />
       </Route>
+      <Route path="/UserProfile" >
+        <UserProfile />
+      </Route>
     </Switch>
   </BrowserRouter>
+  </AuthProvider>
   );
 }
 

@@ -1,18 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Dropdown } from 'react-bootstrap';
 import './Home.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import Login from './Login'; 
-import Signup from './Signup'; 
+import Login from './Login';
+import Signup from './Signup';
+import { AuthContext } from './AuthContext';
+
+
 
 const Home = () => {
   const history = useHistory();
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showSignupModal, setShowSignupModal] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn') === 'true');
-  const [userData, setUserData] = useState(JSON.parse(localStorage.getItem('userData')) || { username: '', email: '' });
-  
+  const { userData,setUserData } = useContext(AuthContext);
+  const [currentAvatar, setCurrentAvatar] = useState('/avatar male-01.png'); // Set to your default avatar path
 
   const showLogin = () => setShowLoginModal(true);
   const hideLogin = () => setShowLoginModal(false);
@@ -21,9 +25,17 @@ const Home = () => {
 
   const handleLoginSuccess = (userDetails) => {
     setIsLoggedIn(true);
-    setUserData({ username: userDetails.username, email: userDetails.email });
+    setUserData({ // Update global user data
+      username: userDetails.username,
+      email: userDetails.email,
+      id: userDetails.id,
+    });
     localStorage.setItem('isLoggedIn', true);
-    localStorage.setItem('userData', JSON.stringify({ username: userDetails.username, email: userDetails.email }));
+    localStorage.setItem('userData', JSON.stringify({
+      username: userDetails.username,
+      email: userDetails.email,
+      id: userDetails.id,
+    }));
     hideLogin();
   };
 
@@ -75,17 +87,34 @@ const Home = () => {
   const navigateToRusme = () => {
     if (isLoggedIn) history.push('/Homepage');
   };
+  // Handler for when an avatar is selected
+  const handleAvatarSelect = (avatarName) => {
+    let avatarPath = '';
+    switch (avatarName) {
+        case 'avatar1':
+            avatarPath = '/avatar male-01.png';
+            break;
+        case 'avatar2':
+            avatarPath = '/avatar female-01.png';
+            break;
+        // Add more cases if there are more avatars
+        default:
+            avatarPath = '/default-avatar.png'; // Fallback to default avatar
+    }
+    setCurrentAvatar(avatarPath);
+    // Here you would also update the user's avatar in the backend
+};
 
   const navigateToHome = () => history.push('/');
+  const navigateToUserProfile = () => history.push('/UserProfile');
   
   const handleLogout = () => {
     setIsLoggedIn(false);
-    setUserData({ username: '', email: '' });
+    setUserData({ username: '', email: '', id: '' }); // Clear global user data
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('userData');
     history.push('/');
   };
-
   return (
     <div>
       <nav className="navbar navbar-expand-lg ">
@@ -99,13 +128,25 @@ const Home = () => {
             <img src="/Quizat-01 x1.png"   className="banner" alt="quiz app" />
           </div>
           {isLoggedIn ? (
-  <div className="navbar-text">
-    {userData.username} ({userData.email})
-    <br/>
-    <button onClick={handleLogout} className="btn btn-hover-effect" style={{ backgroundColor: '#0A78B8', color: 'white' }}>
-      Logout
-    </button>
-  </div>
+  <Dropdown>
+  <Dropdown.Toggle variant="success" id="dropdown-basic"  style={{backgroundColor: '#0a78b8' , borderRadius: '40%'}}>
+      <img src={currentAvatar} alt="User Avatar" style={{ width: '30px', height: '30px' }} />
+      <div></div>
+      {userData.username}
+     
+  </Dropdown.Toggle>
+
+  <Dropdown.Menu>
+      <Dropdown.Item href="#/action-1" onClick={() => navigateToUserProfile()}>Profile</Dropdown.Item>
+      <Dropdown.Item href="#/action-2" onClick={() => handleLogout()}>Logout</Dropdown.Item>
+      <Dropdown.Divider />
+      <Dropdown.Header>Choose an Avatar</Dropdown.Header>
+      <Dropdown.Item onClick={() => handleAvatarSelect('avatar1')}><img src="/avatar male-01.png" alt="Avatar 1" style={{ width: '30px', height: '30px' }} /></Dropdown.Item>
+      <Dropdown.Item onClick={() => handleAvatarSelect('avatar2')}><img src="/avatar female-01.png" alt="Avatar 2" style={{ width: '30px', height: '30px' }} /></Dropdown.Item>
+  </Dropdown.Menu>
+</Dropdown>
+
+
 ) : (
   <div className="btn-group"> {/* Wrap buttons in a btn-group for inline display */}
     <button onClick={showLogin} className="btn btn-hover-effect" style={{ backgroundColor: '#0A78B8', color: 'white', marginRight: '8px' }}>
