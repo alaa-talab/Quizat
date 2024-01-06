@@ -294,6 +294,63 @@ const Home = () => {
   ))}
 </div>
 
+<section id="team" className="py-5">
+  <div className="container">
+    <h2 className="h3 mb-4 text-center text-primary font-weight-bold">Meet Our Quizat Team</h2>
+    <p className="text-center text-secondary">Dedicated to enhancing your learning experience.</p>
+    <div className="row text-center">
+
+     
+      <div className="col-lg-3 col-md-6 mb-4">
+        <div className="card h-100 team-card">
+          <img src="/moh.jpg" alt="Team Member" className="card-img-top team-img"/>
+          <div className="card-body">
+            <h5 className="card-title"> Mohamad AL Ramahi</h5>
+            <p className="card-text"> software engineer</p>
+            <p className="small text-muted"> technology professional applies engineering principles and programming languages.</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="col-lg-3 col-md-6 mb-4">
+        <div className="card h-100 team-card">
+          <img src="/tarek.jpg" alt="Team Member" className="card-img-top team-img"/>
+          <div className="card-body">
+            <h5 className="card-title">Tarek Ziad Taha</h5>
+            <p className="card-text">front end developer</p>
+            <p className="small text-muted">a Software Engineer with a passion to bring ideas to life through code.</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="col-lg-3 col-md-6 mb-4">
+        <div className="card h-100 team-card">
+          <img src="/alaa.jpeg" alt="Team Member" className="card-img-top team-img"/>
+          <div className="card-body">
+            <h5 className="card-title">Alaa Talab</h5>
+            <p className="card-text">Full Stack Web Developer</p>
+            <p className="small text-muted">experience and strong commitment 
+to achieve the organization goals in the excellence field.</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="col-lg-3 col-md-6 mb-4">
+        <div className="card h-100 team-card">
+          <img src="/fares.jpg" alt="Team Member" className="card-img-top team-img"/>
+          <div className="card-body">
+            <h5 className="card-title">Faris Ta'an</h5>
+            <p className="card-text">ui ux designer</p>
+            <p className="small text-muted">ocus on understanding user behaviors, needs, and motivations through research.</p>
+          </div>
+        </div>
+      </div>
+      
+
+    </div>
+  </div>
+</section>
+
 <section id="about-us" className="py-5 text-center text-lg-left animated-background">
   <div className="container">
     <div className="row align-items-center">

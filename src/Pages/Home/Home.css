@@ -216,7 +216,7 @@ body, html {
     padding: 10px 30px; /* Slightly reduce padding on smaller screens */
   }
   
-
+  
 
 }
 
@@ -402,4 +402,111 @@ body, html {
 .image-container:hover img {
   transform: scale(1.03); /* Slightly increase size on hover */
 }
+#team {
+  background-color: #f8f9fa; /* Light background to distinguish the section */
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+#team h5 {
+  -webkit-text-stroke-width: 0.5px;
+  
+  
+}
+#team h2 {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Modern, readable font */
+  font-weight: 700; /* Makes the title bolder */
+  letter-spacing: 1px; /* Adds spacing between letters for a refined look */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle text shadow for depth */
+  font-style: bold;
+}
+#team p {
+  font-family: 'Georgia', serif; /* Elegant, readable font for paragraphs */
+  line-height: 1.6; /* Improves readability with more space between lines */
+  color: #fca311; /* Slightly darker shade for better readability */
+}
 
+/* Card Styles */
+.team-card {
+  border: none; /* Removes the default card border */
+  border-radius: 10px; /* Rounded corners for a modern look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform .3s, box-shadow .3s; /* Smooth transition for hover effects */
+
+  
+}
+
+.team-card:hover {
+  transform: translateY(-5px); /* Slightly raise the card on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Increase shadow on hover for a lifting effect */
+}
+
+.team-img {
+  border-top-left-radius: 10px; /* Rounded corners on the image */
+  border-top-right-radius: 10px;
+  height: 260px; /* Fixed height for uniform images */
+  object-fit: cover; /* Ensures the image covers the area nicely */
+}
+
+.card-title {
+  font-family: 'Arial', sans-serif; /* Consistent, readable font */
+  font-size: 1.1rem; /* Slightly larger font size for emphasis */
+  margin-bottom: 0.5rem; /* Adds a little space below the title */
+  color: #fca311; /* Dark, strong color for emphasis */
+}
+
+.card-text  p{
+  color: #fca311;
+}
+
+/* Hover effects for the card */
+.team-card .card-body p:nth-of-type(1) {
+  font-weight: 600; /* Slightly bolder for the role/specialization */
+  color: #fca311; /* Slightly darker to stand out */
+  margin-bottom: 10px; /* Adds space between the role and the description */
+}
+
+.team-card .card-body p:nth-of-type(2) {
+  font-size: 0.85rem; /* Fine-tuned size for secondary text */
+  font-style: italic; /* Italicized for a differentiator from the main text */
+  line-height: 1.4; /* Adjusted line spacing for better readability */
+}
+
+.team-card:hover .card-body {
+  background-color: #f4f4f4; /* Slight background change on hover */
+}
+
+.team-card:hover .card-title,
+.team-card:hover .card-text {
+  color: #2980b9; /* Color change on hover for an interactive feel */
+}
+
+/* Responsive tweaks */
+@media (max-width: 992px) {
+  .team-card {
+    margin-bottom: 30px; /* Space out cards on smaller screens */
+  }
+}
+/* Icon general styles */
+.icon-spacing {
+  margin-right: 8px; /* Adds space between the icon and the text */
+}
+
+.card-title .fas,
+.card-text .fas,
+.small .fas {
+  color: #0a78b8; /* Sets a uniform color for the icons */
+  vertical-align: middle; /* Aligns the icon vertically with the text */
+}
+
+/* Specific styling adjustments for different sections */
+.card-title .fas {
+  font-size: 1.1rem; /* Slightly larger icon for the title */
+}
+
+.card-text .fas {
+  font-size: 1rem;
+}
+
+.small .fas {
+  font-size: 0.9rem; /* Slightly smaller icon for the description */
+}
